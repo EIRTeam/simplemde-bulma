@@ -731,9 +731,9 @@ function toggleSideBySide(editor) {
 
     // Hide normal preview if active
     var previewNormal = wrapper.lastChild;
-    if (/editor-preview-active/.test(previewNormal.className)) {
+    if (/editor-preview-active content/.test(previewNormal.className)) {
         previewNormal.className = previewNormal.className.replace(
-            /\s*editor-preview-active\s*/g, ''
+            /\s*editor-preview-active content\s*/g, ''
         );
         var toolbar = editor.toolbarElements.preview;
         var toolbar_div = wrapper.previousSibling;
@@ -775,9 +775,9 @@ function togglePreview(editor) {
         preview.className = 'editor-preview';
         wrapper.appendChild(preview);
     }
-    if (/editor-preview-active/.test(preview.className)) {
+    if (/editor-preview-active content/.test(preview.className)) {
         preview.className = preview.className.replace(
-            /\s*editor-preview-active\s*/g, ''
+            /\s*editor-preview-active content\s*/g, ''
         );
         if (toolbar) {
             toolbar.className = toolbar.className.replace(/\s*active\s*/g, '');
@@ -788,7 +788,7 @@ function togglePreview(editor) {
         // give some time for the transition from editor.css to fire and the view to slide from right to left,
         // instead of just appearing.
         setTimeout(function () {
-            preview.className += ' editor-preview-active';
+            preview.className += ' editor-preview-active content';
         }, 1);
         if (toolbar) {
             toolbar.className += ' active';
@@ -804,7 +804,7 @@ function togglePreview(editor) {
 }
 
 function _replaceSelection(cm, active, startEnd, url) {
-    if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className))
+    if (/editor-preview-active content/.test(cm.getWrapperElement().lastChild.className))
         return;
 
     var text;
@@ -840,7 +840,7 @@ function _replaceSelection(cm, active, startEnd, url) {
 
 
 function _toggleHeading(cm, direction, size) {
-    if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className))
+    if (/editor-preview-active content/.test(cm.getWrapperElement().lastChild.className))
         return;
 
     var startPoint = cm.getCursor('start');
@@ -910,7 +910,7 @@ function _toggleHeading(cm, direction, size) {
 
 
 function _toggleLine(cm, name) {
-    if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className))
+    if (/editor-preview-active content/.test(cm.getWrapperElement().lastChild.className))
         return;
 
     var listRegexp = /^(\s*)(\*|-|\+|\d*\.)(\s+)/;
@@ -978,7 +978,7 @@ function _toggleLine(cm, name) {
 }
 
 function _toggleBlock(editor, type, start_chars, end_chars) {
-    if (/editor-preview-active/.test(editor.codemirror.getWrapperElement().lastChild.className))
+    if (/editor-preview-active content/.test(editor.codemirror.getWrapperElement().lastChild.className))
         return;
 
     end_chars = (typeof end_chars === 'undefined') ? start_chars : end_chars;
@@ -1047,7 +1047,7 @@ function _toggleBlock(editor, type, start_chars, end_chars) {
 }
 
 function _cleanBlock(cm) {
-    if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className))
+    if (/editor-preview-active content/.test(cm.getWrapperElement().lastChild.className))
         return;
 
     var startPoint = cm.getCursor('start');
@@ -2057,7 +2057,7 @@ SimpleMDE.prototype.isPreviewActive = function () {
     var wrapper = cm.getWrapperElement();
     var preview = wrapper.lastChild;
 
-    return /editor-preview-active/.test(preview.className);
+    return /editor-preview-active content/.test(preview.className);
 };
 
 SimpleMDE.prototype.isSideBySideActive = function () {
